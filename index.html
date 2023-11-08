@@ -12,12 +12,22 @@
   </div>
 
   <script>
-    window.addEventListener("devicemotion", function(event) {
-      var acceleration = event.accelerationIncludingGravity;
+    // 加速度センサの値を取得する
+    function getAcceleration() {
+      var acceleration = window.deviceMotion.accelerationIncludingGravity;
+      return acceleration;
+    }
+
+    // 加速度センサの値をHTMLに表示する
+    function updateAcceleration() {
+      var acceleration = getAcceleration();
       document.getElementById("x").textContent = acceleration.x;
       document.getElementById("y").textContent = acceleration.y;
       document.getElementById("z").textContent = acceleration.z;
-    });
+    }
+
+    // 加速度センサの値を更新する
+    setInterval(updateAcceleration, 1000);
   </script>
 </body>
 </html>
